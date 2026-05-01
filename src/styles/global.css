@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #020617;
+    color: #F1F5F9;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.25);
+    color: #F1F5F9;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(45, 212, 191, 0.7);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #020617; }
+  ::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.3); border-radius: 99px; }
+}
+
+/* ── Typography helpers ───────────────────────────────────────────────────── */
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+.font-mono-bc {
+  font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+}
+
+/* ── Components ──────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Project card ── */
+  .bc-card {
+    position: relative;
+    background: #07111F;
+    border: 1px solid rgba(45, 212, 191, 0.08);
+    border-radius: 8px;
+    padding: 28px 28px;
+    overflow: hidden;
+    cursor: default;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .bc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--card-accent, #2DD4BF) 30%, transparent);
+    opacity: 0.25;
+    transition: opacity 0.3s ease;
+  }
+  .bc-card:hover {
+    border-color: rgba(45, 212, 191, 0.18);
+    box-shadow: 0 0 32px rgba(34, 211, 238, 0.10);
+  }
+  .bc-card:hover::before {
+    opacity: 0.6;
+  }
+
+  /* ── Pillar card ── */
+  .bc-pillar {
+    border: 1px solid rgba(45, 212, 191, 0.07);
+    border-radius: 6px;
+    padding: 24px;
+    transition: border-color 0.25s ease;
+  }
+  .bc-pillar:hover {
+    border-color: rgba(45, 212, 191, 0.18);
+  }
+
+  /* ── Status pill ── */
+  .bc-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .bc-pill-live     { color: #22D3EE; background: rgba(34,211,238,0.08); }
+  .bc-pill-upcoming { color: #2DD4BF; background: rgba(45,212,191,0.08); }
+  .bc-pill-lab      { color: #94A3B8; background: rgba(148,163,184,0.06); }
+
+  /* ── Eyebrow label ── */
+  .bc-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #2DD4BF;
+  }
+
+  /* ── Section divider ── */
+  .bc-divider {
+    border-top: 1px solid rgba(45, 212, 191, 0.06);
+  }
+
+  /* ── Primary button ── */
+  .bc-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: #2DD4BF;
+    color: #020617;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 3px;
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .bc-btn-primary:hover { background: #22D3EE; }
+
+  /* ── Ghost button ── */
+  .bc-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: transparent;
+    color: #64748B;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 3px;
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .bc-btn-ghost:hover { color: #F1F5F9; border-color: rgba(100,116,139,0.55); }
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-fade-up {
+  animation: fade-up 0.65s ease-out both;
+}
+.anim-d1 { animation-delay: 0.08s; }
+.anim-d2 { animation-delay: 0.18s; }
+.anim-d3 { animation-delay: 0.28s; }
+.anim-d4 { animation-delay: 0.40s; }
+.anim-d5 { animation-delay: 0.52s; }
+
+@keyframes signal-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+.signal-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #2DD4BF;
+  animation: signal-blink 2s ease-in-out infinite;
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #2DD4BF 0%, #22D3EE 50%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

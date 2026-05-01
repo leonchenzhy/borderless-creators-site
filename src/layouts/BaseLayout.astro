@@ -1,0 +1,105 @@
+---
+/**
+ * BaseLayout.astro
+ * Global HTML shell for Borderless Creators.
+ */
+import '../styles/global.css';
+/**
+ *
+ * Canonical origin is always hardcoded to production — never derived from
+ * import.meta.env.SITE_URL — so staging builds cannot leak into canonical/OG URLs.
+ */
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  canonicalPath?: string;
+}
+
+const {
+  title       = 'Borderless Creators — AI-Native Creative Lab',
+  description = 'Borderless Creators is an AI-native creative lab for intelligence, identity, worlds, and stories — built by Leon Chen.',
+  ogImage     = '/og-image.png',   // TODO: create og-image.png (1200×630)
+  ogType      = 'website',
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+// Always hardcode to production so staging builds never pollute SEO signals
+const CANONICAL_ORIGIN = 'https://borderlesscreators.com';
+const canonicalURL     = new URL(canonicalPath, CANONICAL_ORIGIN).href;
+const ogImageURL       = new URL(ogImage, CANONICAL_ORIGIN).href;
+
+const isStaging = import.meta.env.IS_STAGING === 'true';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Borderless Creators',
+  url: CANONICAL_ORIGIN + '/',
+  description: 'Borderless Creators is an AI-native creative lab for intelligence, identity, worlds, and stories.',
+  creator: {
+    '@type': 'Person',
+    name: 'Leon Chen',
+    url: 'https://leonchen.ai',
+    sameAs: ['https://leonchen.ai'],
+  },
+  sameAs: ['https://leonchen.ai', 'https://ainews.borderlesscreators.com/'],
+};
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Staging guard — prevents indexing of preview/staging deployments -->
+    {isStaging && <meta name="robots" content="noindex, nofollow" />}
+    {!isStaging && <meta name="robots" content="index, follow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content={ogType} />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:image"       content={ogImageURL} />
+    <meta property="og:site_name"   content="Borderless Creators" />
+    <meta property="og:locale"      content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImageURL} />
+
+    <!-- Favicon -->
+    <link rel="icon"             type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon"             type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180"  href="/apple-touch-icon.png" />
+
+    <!-- Fonts: Inter + Space Grotesk + IBM Plex Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#020617" />
+  </head>
+
+  <body class="min-h-screen overflow-x-hidden">
+    <slot />
+  </body>
+</html>

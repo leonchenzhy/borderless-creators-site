@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSignalField from '../components/HeroSignalField.astro';
+
+const projects = [
+  {
+    id: 'neural-field',
+    name: 'Neural Field',
+    statusLabel: 'LIVE',
+    pillClass: 'bc-pill-live',
+    showDot: true,
+    category: 'INTELLIGENCE',
+    accentColor: '#22D3EE',
+    description: 'AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology.',
+    url: 'https://ainews.borderlesscreators.com/',
+    ctaLabel: 'VIEW PROJECT →',
+  },
+  {
+    id: 'digital-leon',
+    name: 'Digital Leon',
+    statusLabel: 'IN LAB',
+    pillClass: 'bc-pill-upcoming',
+    showDot: false,
+    category: 'IDENTITY',
+    accentColor: '#2DD4BF',
+    description: 'A digital identity layer exploring how AI agents, synthetic media, and personal storytelling can create more human ways to introduce ideas.',
+    url: null,
+    ctaLabel: null,
+  },
+  {
+    id: 'world-model-studio',
+    name: 'World Model Studio',
+    statusLabel: 'IN LAB',
+    pillClass: 'bc-pill-lab',
+    showDot: false,
+    category: 'WORLDS',
+    accentColor: '#3B82F6',
+    description: 'Experiments in AI-assisted game scene creation, remastering, spatial imagination, and world-building workflows.',
+    url: null,
+    ctaLabel: null,
+  },
+  {
+    id: 'manga-lab',
+    name: 'Manga Lab',
+    statusLabel: 'UPCOMING',
+    pillClass: 'bc-pill-lab',
+    showDot: false,
+    category: 'STORIES',
+    accentColor: '#A78BFA',
+    description: 'AI-generated Japanese-style manga experiments blending character design, visual narrative, and cross-cultural storytelling.',
+    url: null,
+    ctaLabel: null,
+  },
+];
+
+---
+
+<BaseLayout>
+  <!-- ────────────────────────────────────────────────────────────────────── -->
+  <!-- NAV                                                                   -->
+  <!-- ────────────────────────────────────────────────────────────────────── -->
+  <header class="relative z-50">
+    <nav
+      class="mx-auto flex max-w-6xl items-center justify-between px-8 py-7"
+      aria-label="Main navigation"
+    >
+      <!-- Wordmark -->
+      <a href="/" class="flex items-center gap-3 no-underline" aria-label="Borderless Creators — home">
+        <!-- Aperture Field infinity mark (from brand) -->
+        <svg width="50" height="22" viewBox="0 0 56 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#2DD4BF"/>
+              <stop offset="60%"  stop-color="#22D3EE"/>
+              <stop offset="100%" stop-color="#3B82F6"/>
+            </linearGradient>
+          </defs>
+          <path
+            d="M14 4 C6 4 2 9 2 14 C2 19 6 24 14 24 C22 24 28 14 28 14 C28 14 34 4 42 4 C50 4 54 9 54 14 C54 19 50 24 42 24 C34 24 28 14 28 14"
+            stroke="url(#logo-grad)"
+            stroke-width="2.2"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="28" cy="14" r="2"   fill="url(#logo-grad)" opacity="0.8"/>
+          <circle cx="14" cy="14" r="1.2" fill="url(#logo-grad)" opacity="0.35"/>
+          <circle cx="42" cy="14" r="1.2" fill="url(#logo-grad)" opacity="0.35"/>
+        </svg>
+        <span class="font-display font-medium text-[13px] tracking-[0.06em] text-[rgba(241,245,249,0.9)] uppercase">
+          Borderless Creators
+        </span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#projects"  class="nav-link">Projects</a>
+                <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link">leonchen.ai ↗</a>
+        <a
+          href="https://ainews.borderlesscreators.com/"
+          target="_blank"
+          rel="noopener"
+          class="bc-btn-primary"
+          style="padding: 9px 18px;"
+        >Enter Neural Field</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <label class="cursor-pointer md:hidden" for="mob-toggle" aria-label="Open navigation">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+          <line x1="0" y1="1"  x2="22" y2="1"  stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="0" y1="8"  x2="22" y2="8"  stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="0" y1="15" x2="14" y2="15" stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </label>
+    </nav>
+
+    <!-- Mobile menu -->
+    <input type="checkbox" id="mob-toggle" class="sr-only peer" />
+    <div class="hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider" style="background:#07111F;">
+      <a href="#projects"  class="nav-link-mob" onclick="document.getElementById('mob-toggle').checked=false">Projects</a>
+            <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link-mob">leonchen.ai ↗</a>
+      <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <!-- HERO                                                                -->
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <section class="relative overflow-hidden" style="min-height: 600px; display:flex; align-items:center;" aria-label="Hero">
+      <!-- Topographic canvas field -->
+      <HeroSignalField />
+
+      <!-- Bottom fade into base -->
+      <div
+        class="pointer-events-none absolute bottom-0 left-0 right-0 z-10"
+        style="height:120px; background:linear-gradient(to bottom, transparent, #020617);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-20 mx-auto w-full max-w-6xl px-8 pt-10 pb-28">
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-2.5 mb-7 anim-fade-up">
+          <span class="signal-dot"></span>
+          <span class="bc-eyebrow" style="color:#2DD4BF;">An AI-native lab by Leon Chen</span>
+        </div>
+
+        <!-- H1 -->
+        <h1
+          class="font-display font-semibold mb-6 anim-fade-up anim-d1"
+          style="font-size: clamp(44px, 6vw, 72px); line-height:1.04; letter-spacing:-0.02em; max-width:700px;"
+        >
+          Creative systems<br/>
+          <span class="text-gradient">for the intelligence era.</span>
+        </h1>
+
+        <!-- Body -->
+        <p
+          class="mb-10 anim-fade-up anim-d2"
+          style="font-weight:300; font-size:clamp(15px,1.4vw,18px); line-height:1.65; color:rgba(148,163,184,0.85); max-width:460px;"
+        >
+          Projects across intelligence, identity, worlds, and stories.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-3 anim-fade-up anim-d3">
+          <a
+            href="https://ainews.borderlesscreators.com/"
+            target="_blank"
+            rel="noopener"
+            class="bc-btn-primary"
+          >Explore Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <!-- PROJECT UNIVERSE                                                    -->
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <section id="projects" class="py-20 bc-divider" aria-labelledby="projects-heading">
+      <div class="mx-auto max-w-6xl px-8">
+        <!-- Section header -->
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <p class="bc-eyebrow mb-2">Project Universe</p>
+            <h2 id="projects-heading" class="font-display font-semibold text-[#F1F5F9]"
+              style="font-size:clamp(24px,3vw,34px); letter-spacing:-0.02em;">The Lab</h2>
+          </div>
+        </div>
+
+        <!-- 2-col project grid -->
+        <div class="grid gap-4 sm:grid-cols-2">
+          {projects.map((p) => (
+            <article
+              class="bc-card group"
+              style={`--card-accent: ${p.accentColor};`}
+            >
+              <!-- Top row: category + status -->
+              <div class="flex items-center justify-between mb-5">
+                <span
+                  class="font-mono-bc text-[9px] tracking-[0.2em] uppercase"
+                  style={`color:${p.accentColor}; opacity:0.85;`}
+                >{p.category}</span>
+                <span class={`bc-pill ${p.pillClass}`}>
+                  {p.showDot && <span class="signal-dot" style="width:4px;height:4px;"></span>}
+                  {p.statusLabel}
+                </span>
+              </div>
+
+              <!-- Name -->
+              <h3 class="font-display font-semibold text-[#F1F5F9] mb-2.5"
+                style="font-size:clamp(18px,2vw,22px); letter-spacing:-0.01em; line-height:1.2;">
+                {p.name}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-[13px] leading-relaxed mb-7"
+                style="color:rgba(148,163,184,0.65); font-weight:300;">
+                {p.description}
+              </p>
+
+              <!-- CTA -->
+              {p.url && p.ctaLabel && (
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="font-mono-bc text-[10px] tracking-[0.14em] uppercase transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+                  style={`color:${p.accentColor}; text-decoration:none;`}
+                  aria-label={`${p.name} — opens in new tab`}
+                >
+                  {p.ctaLabel}
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <!-- LIVE MODULE (Neural Field highlight)                                -->
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <section class="py-20 bc-divider" aria-labelledby="live-heading">
+      <div class="mx-auto max-w-6xl px-8">
+        <div
+          class="relative overflow-hidden rounded-[8px] border"
+          style="background:linear-gradient(135deg,#07111F 0%,rgba(11,23,38,0.6) 100%); border-color:rgba(45,212,191,0.1); padding:40px 48px;"
+        >
+          <!-- Top accent line -->
+          <div
+            class="absolute top-0 left-0 right-0"
+            style="height:1px; background:linear-gradient(90deg,transparent,rgba(34,211,238,0.45),transparent);"
+            aria-hidden="true"
+          ></div>
+
+          <div class="flex flex-col sm:flex-row gap-8 sm:items-start sm:justify-between">
+            <div class="flex-1 max-w-xl">
+              <div class="flex items-center gap-2 mb-5">
+                <span class="signal-dot"></span>
+                <span class="bc-eyebrow" style="color:#2DD4BF;">Live from the Lab</span>
+              </div>
+              <p class="font-mono-bc text-[10px] tracking-[0.18em] uppercase mb-3" style="color:#22D3EE;">Intelligence</p>
+              <h2 id="live-heading" class="font-display font-semibold text-[#F1F5F9] mb-3"
+                style="font-size:clamp(22px,2.5vw,28px); letter-spacing:-0.01em;">Neural Field</h2>
+              <p class="text-sm leading-relaxed mb-6" style="color:rgba(148,163,184,0.7); font-weight:300;">
+                AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology. Updated continuously.
+              </p>
+              <a
+                href="https://ainews.borderlesscreators.com/"
+                target="_blank"
+                rel="noopener"
+                class="bc-btn-primary"
+              >Enter Neural Field</a>
+            </div>
+            <!-- Decorative signal marks -->
+            <div class="hidden sm:flex flex-col gap-3 items-end self-center" aria-hidden="true">
+              {['#22D3EE','#2DD4BF','#3B82F6','#A78BFA'].map((c, i) => (
+                <div
+                  class="rounded-sm"
+                  style={`width:${32 - i*6}px; height:4px; background:${c}; opacity:${0.5 - i*0.1};`}
+                ></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+  </main>
+
+  <!-- ──────────────────────────────────────────────────────────────────────── -->
+  <!-- FOOTER                                                                 -->
+  <!-- ──────────────────────────────────────────────────────────────────────── -->
+  <footer class="bc-divider py-12">
+    <div class="mx-auto max-w-6xl px-8">
+      <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <!-- Brand -->
+        <div class="max-w-xs">
+          <div class="flex items-center gap-3 mb-3">
+            <!-- Compact infinity mark -->
+            <svg width="36" height="16" viewBox="0 0 56 28" fill="none" aria-hidden="true">
+              <path d="M14 4 C6 4 2 9 2 14 C2 19 6 24 14 24 C22 24 28 14 28 14 C28 14 34 4 42 4 C50 4 54 9 54 14 C54 19 50 24 42 24 C34 24 28 14 28 14"
+                stroke="rgba(45,212,191,0.5)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <circle cx="28" cy="14" r="2" fill="rgba(45,212,191,0.5)" opacity="0.7"/>
+            </svg>
+            <span class="font-mono-bc text-[11px] tracking-[0.08em]" style="color:#64748B;">Borderless Creators</span>
+          </div>
+          <p class="text-[12px] leading-relaxed" style="color:rgba(100,116,139,0.6); font-weight:300;">
+            An AI-native creative lab for intelligence, identity, worlds, and stories.
+          </p>
+          <p class="text-[12px] mt-1" style="color:rgba(100,116,139,0.5);">
+            Created by <a href="https://leonchen.ai" target="_blank" rel="noopener" class="hover:text-[#94A3B8] transition-colors">Leon Chen</a>.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <nav aria-label="Footer navigation">
+          <ul class="flex flex-wrap gap-x-7 gap-y-3">
+            {[
+              { label: 'Neural Field', href: 'https://ainews.borderlesscreators.com/' },
+              { label: 'Projects',     href: '#projects' },
+                            { label: 'leonchen.ai',  href: 'https://leonchen.ai' },
+              { label: 'Contact',      href: 'mailto:zhongyue.leon.chen@gmail.com' },
+            ].map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener' : undefined}
+                  class="font-mono-bc text-[10px] tracking-[0.1em] uppercase transition-colors duration-150 hover:text-[#2DD4BF]"
+                  style="color:rgba(100,116,139,0.6); text-decoration:none;"
+                >{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-10 pt-6 bc-divider flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+        <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.4);">
+          &copy; {new Date().getFullYear()} Borderless Creators
+        </p>
+        <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.3);">
+          borderlesscreators.com
+        </p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  /* Nav links */
+  .nav-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #64748B;
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .nav-link:hover { color: #2DD4BF; }
+
+  .nav-link-mob {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #64748B;
+    text-decoration: none;
+    padding: 8px 0;
+    display: block;
+    transition: color 0.18s ease;
+  }
+  .nav-link-mob:hover { color: #2DD4BF; }
+</style>

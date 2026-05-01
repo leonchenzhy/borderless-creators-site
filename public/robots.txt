@@ -1,0 +1,7 @@
+# Borderless Creators — https://borderlesscreators.com
+# Production robots.txt: crawling allowed
+
+User-agent: *
+Allow: /
+
+Sitemap: https://borderlesscreators.com/sitemap-index.xml

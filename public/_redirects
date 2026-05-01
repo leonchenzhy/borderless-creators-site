@@ -1,0 +1,7 @@
+# Borderless Creators — Cloudflare Pages _redirects
+#
+# NOTE: Cross-domain redirects (www → apex) are handled by functions/_middleware.js
+# because Cloudflare Pages ignores cross-origin rules in this file.
+#
+# Path-based redirects only:
+# (none needed at launch — add here as paths are restructured)

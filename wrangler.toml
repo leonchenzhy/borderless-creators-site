@@ -1,0 +1,16 @@
+name = "borderless-creators-site"
+pages_build_output_dir = "./dist"
+
+# ── Deploy (run locally after `npm run build`) ────────────────────────────────
+# npx wrangler pages deploy ./dist --project-name borderless-creators-site
+
+# ── Production env vars ───────────────────────────────────────────────────────
+[vars]
+SITE_URL = "https://borderlesscreators.com"
+
+# ── Staging / Preview env vars ────────────────────────────────────────────────
+# STAGING_PASSWORD must be set as a Pages Secret (Preview scope only):
+#   Pages → Settings → Environment Variables → Preview → Add secret: STAGING_PASSWORD
+[env.preview.vars]
+SITE_URL    = "https://staging.borderlesscreators.com"
+IS_STAGING  = "true"
