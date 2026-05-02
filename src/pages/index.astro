@@ -151,7 +151,7 @@ const projects = [
         <!-- Eyebrow -->
         <div class="flex items-center gap-2.5 mb-7 anim-fade-up">
           <span class="signal-dot"></span>
-          <span class="bc-eyebrow" style="color:#2DD4BF;">An AI-native lab by Leon Chen</span>
+          <span class="bc-eyebrow" style="color:rgba(45,212,191,0.6);">An AI-native lab by <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="eyebrow-name-link">Leon Chen ↗</a></span>
         </div>
 
         <!-- H1 -->
@@ -484,6 +484,19 @@ const projects = [
     transition: color 0.18s ease;
   }
   .nav-link-mob:hover { color: #2DD4BF; }
+
+  /* Hero eyebrow — Leon Chen link */
+  .eyebrow-name-link {
+    color: rgba(241,245,249,0.90);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(241,245,249,0.22);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .eyebrow-name-link:hover {
+    color: #2DD4BF;
+    border-color: #2DD4BF;
+  }
 
   /* ── Sticky header ── */
   .bc-header {
