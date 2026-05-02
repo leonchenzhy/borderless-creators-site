@@ -288,7 +288,7 @@ const projects = [
     <!-- PHILOSOPHY / ABOUT                                                  -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <section class="bc-philosophy" aria-labelledby="philosophy-heading">
-      <div class="mx-auto max-w-6xl px-8">
+      <div class="mx-auto w-full max-w-6xl px-8">
         <div class="philosophy-grid">
 
           <!-- Text block -->
@@ -349,7 +349,11 @@ const projects = [
 <style>
   /* Philosophy / About section */
   .bc-philosophy {
-    padding: 120px 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
     background: linear-gradient(180deg, #020617 0%, #040d1a 50%, #020617 100%);
   }
   .philosophy-grid {
