@@ -112,6 +112,24 @@ const projects = [
       <!-- Topographic canvas field -->
       <HeroSignalField />
 
+      <!-- Atmospheric glow behind character -->
+      <div
+        class="pointer-events-none absolute inset-0 z-4"
+        style="background: radial-gradient(ellipse 55% 70% at 82% 52%, rgba(34,211,238,0.07) 0%, rgba(59,130,246,0.05) 40%, transparent 70%);"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Character overlay — vertically centred so feet stay visible -->
+      <div class="hero-character-wrap pointer-events-none" aria-hidden="true">
+        <img src="/hero-character.png" alt="" class="hero-character-img" />
+        <!-- Left-edge fade into canvas -->
+        <div class="hero-character-fade-left"></div>
+        <!-- Top fade -->
+        <div class="hero-character-fade-top"></div>
+        <!-- Bottom fade -->
+        <div class="hero-character-fade-bottom"></div>
+      </div>
+
       <!-- Bottom fade into base -->
       <div
         class="pointer-events-none absolute bottom-0 left-0 right-0 z-10"
@@ -293,6 +311,48 @@ const projects = [
 </BaseLayout>
 
 <style>
+  /* Hero character overlay */
+  .hero-character-wrap {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 86vh;
+    height: 86svh;
+    z-index: 5;
+  }
+  .hero-character-img {
+    height: 100%;
+    width: auto;
+    display: block;
+    mix-blend-mode: screen;
+    opacity: 0.88;
+  }
+  .hero-character-fade-left {
+    position: absolute;
+    inset: 0;
+    right: auto;
+    width: 240px;
+    background: linear-gradient(to right, #020617 0%, transparent 100%);
+  }
+  .hero-character-fade-top {
+    position: absolute;
+    inset: 0;
+    bottom: auto;
+    height: 120px;
+    background: linear-gradient(to bottom, #020617 0%, transparent 100%);
+  }
+  .hero-character-fade-bottom {
+    position: absolute;
+    inset: 0;
+    top: auto;
+    height: 120px;
+    background: linear-gradient(to top, #020617 0%, transparent 100%);
+  }
+  @media (max-width: 900px) {
+    .hero-character-wrap { display: none; }
+  }
+
   /* Live card */
   .bc-card-live {
     background: linear-gradient(135deg, #07111F 0%, rgba(11,23,38,0.7) 100%);
