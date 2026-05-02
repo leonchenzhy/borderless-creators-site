@@ -1,0 +1,23 @@
+{
+  "name": "Borderless Creators",
+  "short_name": "Borderless Creators",
+  "description": "An AI-native creative lab for intelligence, identity, worlds, and stories.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#0B1020",
+  "background_color": "#020617",
+  "display": "standalone",
+  "start_url": "/"
+}

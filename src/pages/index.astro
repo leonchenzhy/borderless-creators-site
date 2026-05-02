@@ -65,30 +65,8 @@ const projects = [
       aria-label="Main navigation"
     >
       <!-- Wordmark -->
-      <a href="/" class="flex items-center gap-3 no-underline" aria-label="Borderless Creators — home">
-        <!-- Aperture Field infinity mark (from brand) -->
-        <svg width="50" height="22" viewBox="0 0 56 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%"   stop-color="#2DD4BF"/>
-              <stop offset="60%"  stop-color="#22D3EE"/>
-              <stop offset="100%" stop-color="#3B82F6"/>
-            </linearGradient>
-          </defs>
-          <path
-            d="M14 4 C6 4 2 9 2 14 C2 19 6 24 14 24 C22 24 28 14 28 14 C28 14 34 4 42 4 C50 4 54 9 54 14 C54 19 50 24 42 24 C34 24 28 14 28 14"
-            stroke="url(#logo-grad)"
-            stroke-width="2.2"
-            fill="none"
-            stroke-linecap="round"
-          />
-          <circle cx="28" cy="14" r="2"   fill="url(#logo-grad)" opacity="0.8"/>
-          <circle cx="14" cy="14" r="1.2" fill="url(#logo-grad)" opacity="0.35"/>
-          <circle cx="42" cy="14" r="1.2" fill="url(#logo-grad)" opacity="0.35"/>
-        </svg>
-        <span class="font-display font-medium text-[13px] tracking-[0.06em] text-[rgba(241,245,249,0.9)] uppercase">
-          Borderless Creators
-        </span>
+      <a href="/" class="flex items-center no-underline" aria-label="Borderless Creators — home">
+        <img src="/logo.png" alt="Borderless Creators" height="32" style="height:32px; width:auto; display:block;" />
       </a>
 
       <!-- Desktop nav links -->
@@ -300,14 +278,8 @@ const projects = [
       <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
         <!-- Brand -->
         <div class="max-w-xs">
-          <div class="flex items-center gap-3 mb-3">
-            <!-- Compact infinity mark -->
-            <svg width="36" height="16" viewBox="0 0 56 28" fill="none" aria-hidden="true">
-              <path d="M14 4 C6 4 2 9 2 14 C2 19 6 24 14 24 C22 24 28 14 28 14 C28 14 34 4 42 4 C50 4 54 9 54 14 C54 19 50 24 42 24 C34 24 28 14 28 14"
-                stroke="rgba(45,212,191,0.5)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-              <circle cx="28" cy="14" r="2" fill="rgba(45,212,191,0.5)" opacity="0.7"/>
-            </svg>
-            <span class="font-mono-bc text-[11px] tracking-[0.08em]" style="color:#64748B;">Borderless Creators</span>
+          <div class="flex items-center mb-3">
+            <img src="/logo.png" alt="Borderless Creators" style="height:24px; width:auto; display:block; opacity:0.55;" />
           </div>
           <p class="text-[12px] leading-relaxed" style="color:rgba(100,116,139,0.6); font-weight:300;">
             An AI-native creative lab for intelligence, identity, worlds, and stories.
