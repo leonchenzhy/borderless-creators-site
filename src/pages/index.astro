@@ -156,7 +156,7 @@ const projects = [
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <!-- PROJECT UNIVERSE                                                    -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
-    <section id="projects" class="py-20 bc-divider" aria-labelledby="projects-heading">
+    <section id="projects" class="py-20" aria-labelledby="projects-heading">
       <div class="mx-auto max-w-6xl px-8">
         <!-- Section header -->
         <div class="flex items-end justify-between mb-10">
@@ -271,7 +271,17 @@ const projects = [
   <!-- FOOTER                                                                 -->
   <!-- ──────────────────────────────────────────────────────────────────────── -->
   <footer class="bc-divider py-6">
-    <div class="mx-auto max-w-6xl px-8">
+    <div class="mx-auto max-w-6xl px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- Logo -->
+      <a href="/" aria-label="Borderless Creators — home">
+        <img
+          src="/logo-nav.png"
+          alt="Borderless Creators"
+          height="24"
+          style="height:24px; width:auto; display:block; opacity:0.5;"
+        />
+      </a>
+      <!-- Copyright -->
       <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.45);">
         &copy; {new Date().getFullYear()} Borderless Creators. Built with
         <a href="https://astro.build/" target="_blank" rel="noopener" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Astro</a>
