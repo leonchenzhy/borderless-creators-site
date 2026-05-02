@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSignalField from '../components/HeroSignalField.astro';
+// HeroSignalField kept as component file for future use — not rendered while hero-banner.png is active
 
 const projects = [
   {
@@ -76,7 +76,7 @@ const projects = [
 
       <!-- Desktop nav links -->
       <div class="hidden md:flex items-center gap-6">
-        <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link">leonchen.ai ↗</a>
+        <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link">leonchen.ai ↗</a>
         <a href="mailto:contact@borderlesscreators.com" class="nav-link">Contact</a>
         <a
           href="https://ainews.borderlesscreators.com/"
@@ -100,9 +100,9 @@ const projects = [
     <!-- Mobile menu -->
     <input type="checkbox" id="mob-toggle" class="sr-only peer" />
     <div class="hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider" style="background:#07111F;">
-      <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link-mob">leonchen.ai ↗</a>
+      <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link-mob">leonchen.ai ↗</a>
       <a href="mailto:contact@borderlesscreators.com" class="nav-link-mob">Contact</a>
-      <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
+      <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener noreferrer" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
     </div>
   </header>
 
@@ -111,14 +111,15 @@ const projects = [
     <!-- HERO                                                                -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <section class="relative overflow-hidden" style="min-height: 100vh; min-height: 100svh; display:flex; align-items:center;" aria-label="Hero">
-      <!-- Canvas fallback (shows if banner image fails to load) -->
-      <HeroSignalField />
-
       <!-- Hero banner image — primary background -->
       <img
-        src="/hero-banner.png"
+        src="/hero-banner.webp"
         alt=""
         aria-hidden="true"
+        width="1586"
+        height="992"
+        decoding="async"
+        fetchpriority="high"
         class="pointer-events-none absolute inset-0 w-full h-full"
         style="object-fit:cover; object-position:center center; z-index:1;"
       />
@@ -217,7 +218,7 @@ const projects = [
 
                 <!-- Description -->
                 <p class="text-[13px] leading-relaxed mb-7"
-                  style="color:rgba(148,163,184,0.65); font-weight:300;">
+                  style="color:rgba(148,163,184,0.78); font-weight:300;">
                   {p.description}
                 </p>
 
@@ -259,7 +260,7 @@ const projects = [
 
                 <!-- Description -->
                 <p class="text-[13px] leading-relaxed mb-7"
-                  style="color:rgba(148,163,184,0.65); font-weight:300;">
+                  style="color:rgba(148,163,184,0.78); font-weight:300;">
                   {p.description}
                 </p>
 
@@ -302,7 +303,7 @@ const projects = [
               <span class="text-gradient">build with intelligence.</span>
             </h2>
             <div class="philosophy-copy">
-              <p>The next era of creation will not be defined by borders. Human and machine. Strategy and art. Technology and culture. Imagination and reality. These boundaries are dissolving — and becoming creative material.</p>
+              <p>The next era of creation will not be defined by borders. Human and machine. Strategy and art. Technology and culture. Imagination and reality. These boundaries are dissolving and becoming creative material.</p>
               <p>Ideas accelerate into experiences. Experiences become stories. Stories awaken intelligence. Intelligence expands imagination. With AI and beyond.</p>
               <p class="philosophy-invitation">Borderless Creators is our invitation into that loop: to build, explore, and imagine what comes next.</p>
             </div>
@@ -311,7 +312,7 @@ const projects = [
           <!-- Visual block -->
           <div class="philosophy-visual" aria-hidden="true">
             <div class="philosophy-glow"></div>
-            <img src="/brand-mark.png" alt="" class="philosophy-mark" />
+            <img src="/brand-mark.webp" alt="" class="philosophy-mark" width="340" height="340" loading="lazy" decoding="async" />
           </div>
 
         </div>
@@ -337,9 +338,9 @@ const projects = [
       <!-- Copyright -->
       <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.45);">
         &copy; {new Date().getFullYear()} Borderless Creators. Built with
-        <a href="https://astro.build/" target="_blank" rel="noopener" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Astro</a>
+        <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Astro</a>
         &amp;
-        <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Cloudflare Pages</a>.
+        <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Cloudflare Pages</a>.
       </p>
     </div>
   </footer>
@@ -360,7 +361,7 @@ const projects = [
   .philosophy-copy p {
     font-size: 15px;
     line-height: 1.8;
-    color: rgba(148,163,184,0.72);
+    color: rgba(148,163,184,0.82);
     font-weight: 300;
     margin-bottom: 18px;
   }

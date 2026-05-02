@@ -12,7 +12,7 @@ https://borderlesscreators.com/
 ## Project Universe
 
 - Neural Field: Live. AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology. URL: https://ainews.borderlesscreators.com/
-- Digital Leon: Upcoming. A digital identity layer exploring how AI agents, synthetic media, and personal storytelling can create more human ways to introduce ideas.
+- Digital Leon: In Lab. A digital identity experiment exploring AI agents, synthetic media, and more human ways to introduce ideas.
 - World Model Studio: Exploring. Experiments in AI-assisted game scene creation, remastering, spatial imagination, and world-building workflows.
 - Manga Lab: Exploring. AI-generated Japanese-style manga experiments blending character design, visual narrative, and cross-cultural storytelling.
 
@@ -29,4 +29,4 @@ Borderless Creators explores how AI expands creative systems across intelligence
 Leon Chen — https://leonchen.ai
 
 ## Contact
-zhongyue.leon.chen@gmail.com
+contact@borderlesscreators.com
