@@ -59,7 +59,7 @@ const projects = [
   <!-- ────────────────────────────────────────────────────────────────────── -->
   <!-- NAV                                                                   -->
   <!-- ────────────────────────────────────────────────────────────────────── -->
-  <header class="relative z-50">
+  <header class="absolute top-0 left-0 right-0 z-50">
     <nav
       class="mx-auto flex max-w-6xl items-center justify-between px-8 py-7"
       aria-label="Main navigation"
@@ -77,6 +77,7 @@ const projects = [
       <!-- Desktop nav links -->
       <div class="hidden md:flex items-center gap-6">
         <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link">leonchen.ai ↗</a>
+        <a href="mailto:contact@borderlesscreators.com" class="nav-link">Contact</a>
         <a
           href="https://ainews.borderlesscreators.com/"
           target="_blank"
@@ -100,6 +101,7 @@ const projects = [
     <input type="checkbox" id="mob-toggle" class="sr-only peer" />
     <div class="hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider" style="background:#07111F;">
       <a href="https://leonchen.ai" target="_blank" rel="noopener" class="nav-link-mob">leonchen.ai ↗</a>
+      <a href="mailto:contact@borderlesscreators.com" class="nav-link-mob">Contact</a>
       <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
     </div>
   </header>
@@ -120,6 +122,13 @@ const projects = [
         class="pointer-events-none absolute inset-0 w-full h-full"
         style="object-fit:cover; object-position:center center; z-index:1;"
       />
+
+      <!-- Top fade — keeps nav readable over the banner image -->
+      <div
+        class="pointer-events-none absolute top-0 left-0 right-0 z-10"
+        style="height:200px; background:linear-gradient(to bottom, rgba(2,6,23,0.82) 0%, rgba(2,6,23,0.35) 65%, transparent 100%);"
+        aria-hidden="true"
+      ></div>
 
       <!-- Bottom fade into base -->
       <div
@@ -314,7 +323,7 @@ const projects = [
   <!-- ──────────────────────────────────────────────────────────────────────── -->
   <!-- FOOTER                                                                 -->
   <!-- ──────────────────────────────────────────────────────────────────────── -->
-  <footer class="bc-divider py-6">
+  <footer class="py-6">
     <div class="mx-auto max-w-6xl px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <!-- Logo -->
       <a href="/" aria-label="Borderless Creators — home">
