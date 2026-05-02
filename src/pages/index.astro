@@ -274,6 +274,41 @@ const projects = [
       </div>
     </section>
 
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <!-- PHILOSOPHY / ABOUT                                                  -->
+    <!-- ──────────────────────────────────────────────────────────────────── -->
+    <section class="bc-philosophy" aria-labelledby="philosophy-heading">
+      <div class="mx-auto max-w-6xl px-8">
+        <div class="philosophy-grid">
+
+          <!-- Text block -->
+          <div class="philosophy-text">
+            <p class="bc-eyebrow mb-5" style="color:#2DD4BF;">About Borderless Creators</p>
+            <h2
+              id="philosophy-heading"
+              class="font-display font-semibold text-[#F1F5F9] mb-8"
+              style="font-size:clamp(28px,3.5vw,44px); letter-spacing:-0.02em; line-height:1.1;"
+            >
+              Create beyond borders,<br/>
+              <span class="text-gradient">build with intelligence.</span>
+            </h2>
+            <div class="philosophy-copy">
+              <p>The next era of creation will not be defined by borders. Human and machine. Strategy and art. Technology and culture. Imagination and reality. These boundaries are dissolving — and becoming creative material.</p>
+              <p>Ideas accelerate into experiences. Experiences become stories. Stories awaken intelligence. Intelligence expands imagination. With AI and beyond.</p>
+              <p class="philosophy-invitation">Borderless Creators is our invitation into that loop: to build, explore, and imagine what comes next.</p>
+            </div>
+          </div>
+
+          <!-- Visual block -->
+          <div class="philosophy-visual" aria-hidden="true">
+            <div class="philosophy-glow"></div>
+            <img src="/brand-mark.png" alt="" class="philosophy-mark" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ──────────────────────────────────────────────────────────────────────── -->
@@ -302,44 +337,64 @@ const projects = [
 </BaseLayout>
 
 <style>
-  /* Hero character overlay */
-  .hero-character-wrap {
-    position: absolute;
-    right: 0;
-    top: 7vh;
-    height: 82vh;
-    height: 82svh;
-    z-index: 5;
+  /* Philosophy / About section */
+  .bc-philosophy {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #020617 0%, #040d1a 50%, #020617 100%);
   }
-  .hero-character-img {
-    height: 100%;
-    width: auto;
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .philosophy-copy p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(148,163,184,0.72);
+    font-weight: 300;
+    margin-bottom: 18px;
+  }
+  .philosophy-copy p:last-child { margin-bottom: 0; }
+  .philosophy-invitation {
+    color: rgba(241,245,249,0.88) !important;
+    border-left: 2px solid #2DD4BF;
+    padding-left: 18px;
+    margin-top: 32px !important;
+    font-style: italic;
+  }
+  .philosophy-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .philosophy-glow {
+    position: absolute;
+    inset: -60px;
+    background: radial-gradient(ellipse 75% 75% at 50% 50%,
+      rgba(34,211,238,0.09) 0%,
+      rgba(59,130,246,0.06) 45%,
+      transparent 70%);
+    pointer-events: none;
+  }
+  .philosophy-mark {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
     display: block;
-    opacity: 0.92;
+    filter:
+      drop-shadow(0 0 28px rgba(34,211,238,0.28))
+      drop-shadow(0 0 64px rgba(34,211,238,0.12));
+    opacity: 0.88;
   }
-  .hero-character-fade-left {
-    position: absolute;
-    inset: 0;
-    right: auto;
-    width: 200px;
-    background: linear-gradient(to right, #020617 0%, transparent 100%);
-  }
-  .hero-character-fade-top {
-    position: absolute;
-    inset: 0;
-    bottom: auto;
-    height: 80px;
-    background: linear-gradient(to bottom, #020617 0%, transparent 100%);
-  }
-  .hero-character-fade-bottom {
-    position: absolute;
-    inset: 0;
-    top: auto;
-    height: 100px;
-    background: linear-gradient(to top, #020617 0%, transparent 100%);
-  }
-  @media (max-width: 900px) {
-    .hero-character-wrap { display: none; }
+  @media (max-width: 768px) {
+    .philosophy-grid {
+      grid-template-columns: 1fr;
+      gap: 52px;
+    }
+    .philosophy-visual { order: -1; }
+    .philosophy-mark { max-width: 180px; margin: 0 auto; }
   }
 
   /* Live card */
