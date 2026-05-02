@@ -174,130 +174,118 @@ const projects = [
         <!-- 2-col project grid -->
         <div class="grid gap-4 sm:grid-cols-2">
           {projects.map((p) => (
-            <article
-              class="bc-card group"
-              style={`--card-accent: ${p.accentColor};`}
-            >
-              <!-- Top row: category + status -->
-              <div class="flex items-center justify-between mb-5">
-                <span
-                  class="font-mono-bc text-[9px] tracking-[0.2em] uppercase"
-                  style={`color:${p.accentColor}; opacity:0.85;`}
-                >{p.category}</span>
-                <span class={`bc-pill ${p.pillClass}`}>
-                  {p.showDot && <span class="signal-dot" style="width:4px;height:4px;"></span>}
-                  {p.statusLabel}
-                </span>
-              </div>
+            p.id === 'neural-field' ? (
+              <!-- Neural Field — LIVE card -->
+              <article
+                class="bc-card-live group relative overflow-hidden"
+                style={`--card-accent: ${p.accentColor};`}
+              >
+                <!-- Animated top accent line -->
+                <div class="absolute top-0 left-0 right-0 h-px live-accent-line" aria-hidden="true"></div>
 
-              <!-- Name -->
-              <h3 class="font-display font-semibold text-[#F1F5F9] mb-2.5"
-                style="font-size:clamp(18px,2vw,22px); letter-spacing:-0.01em; line-height:1.2;">
-                {p.name}
-              </h3>
+                <!-- Top row: category + status -->
+                <div class="flex items-center justify-between mb-5">
+                  <span
+                    class="font-mono-bc text-[9px] tracking-[0.2em] uppercase"
+                    style={`color:${p.accentColor}; opacity:0.85;`}
+                  >{p.category}</span>
+                  <span class="bc-pill bc-pill-live" style="gap:5px;">
+                    <span class="signal-dot" style="width:5px;height:5px;"></span>
+                    {p.statusLabel}
+                  </span>
+                </div>
 
-              <!-- Description -->
-              <p class="text-[13px] leading-relaxed mb-7"
-                style="color:rgba(148,163,184,0.65); font-weight:300;">
-                {p.description}
-              </p>
+                <!-- Name -->
+                <h3 class="font-display font-semibold text-[#F1F5F9] mb-2.5"
+                  style="font-size:clamp(18px,2vw,22px); letter-spacing:-0.01em; line-height:1.2;">
+                  {p.name}
+                </h3>
 
-              <!-- CTA -->
-              {p.url && p.ctaLabel && (
+                <!-- Description -->
+                <p class="text-[13px] leading-relaxed mb-7"
+                  style="color:rgba(148,163,184,0.65); font-weight:300;">
+                  {p.description}
+                </p>
+
+                <!-- CTA — always visible for live card -->
                 <a
-                  href={p.url}
+                  href={p.url!}
                   target="_blank"
                   rel="noopener"
-                  class="font-mono-bc text-[10px] tracking-[0.14em] uppercase transition-opacity duration-200 opacity-0 group-hover:opacity-100"
-                  style={`color:${p.accentColor}; text-decoration:none;`}
+                  class="bc-btn-primary inline-block"
+                  style="font-size:11px; padding:8px 16px;"
                   aria-label={`${p.name} — opens in new tab`}
                 >
                   {p.ctaLabel}
                 </a>
-              )}
-            </article>
+              </article>
+            ) : (
+              <!-- Standard card -->
+              <article
+                class="bc-card group"
+                style={`--card-accent: ${p.accentColor};`}
+              >
+                <!-- Top row: category + status -->
+                <div class="flex items-center justify-between mb-5">
+                  <span
+                    class="font-mono-bc text-[9px] tracking-[0.2em] uppercase"
+                    style={`color:${p.accentColor}; opacity:0.85;`}
+                  >{p.category}</span>
+                  <span class={`bc-pill ${p.pillClass}`}>
+                    {p.showDot && <span class="signal-dot" style="width:4px;height:4px;"></span>}
+                    {p.statusLabel}
+                  </span>
+                </div>
+
+                <!-- Name -->
+                <h3 class="font-display font-semibold text-[#F1F5F9] mb-2.5"
+                  style="font-size:clamp(18px,2vw,22px); letter-spacing:-0.01em; line-height:1.2;">
+                  {p.name}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-[13px] leading-relaxed mb-7"
+                  style="color:rgba(148,163,184,0.65); font-weight:300;">
+                  {p.description}
+                </p>
+
+                <!-- CTA -->
+                {p.url && p.ctaLabel && (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="font-mono-bc text-[10px] tracking-[0.14em] uppercase transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+                    style={`color:${p.accentColor}; text-decoration:none;`}
+                    aria-label={`${p.name} — opens in new tab`}
+                  >
+                    {p.ctaLabel}
+                  </a>
+                )}
+              </article>
+            )
           ))}
         </div>
       </div>
     </section>
-
-    <!-- ──────────────────────────────────────────────────────────────────── -->
-    <!-- LIVE MODULE (Neural Field highlight)                                -->
-    <!-- ──────────────────────────────────────────────────────────────────── -->
-    <section class="py-20 bc-divider" aria-labelledby="live-heading">
-      <div class="mx-auto max-w-6xl px-8">
-        <div
-          class="relative overflow-hidden rounded-[8px] border"
-          style="background:linear-gradient(135deg,#07111F 0%,rgba(11,23,38,0.6) 100%); border-color:rgba(45,212,191,0.1); padding:40px 48px;"
-        >
-          <!-- Top accent line -->
-          <div
-            class="absolute top-0 left-0 right-0"
-            style="height:1px; background:linear-gradient(90deg,transparent,rgba(34,211,238,0.45),transparent);"
-            aria-hidden="true"
-          ></div>
-
-          <div class="flex flex-col sm:flex-row gap-8 sm:items-start sm:justify-between">
-            <div class="flex-1 max-w-xl">
-              <div class="flex items-center gap-2 mb-5">
-                <span class="signal-dot"></span>
-                <span class="bc-eyebrow" style="color:#2DD4BF;">Live from the Lab</span>
-              </div>
-              <p class="font-mono-bc text-[10px] tracking-[0.18em] uppercase mb-3" style="color:#22D3EE;">Intelligence</p>
-              <h2 id="live-heading" class="font-display font-semibold text-[#F1F5F9] mb-3"
-                style="font-size:clamp(22px,2.5vw,28px); letter-spacing:-0.01em;">Neural Field</h2>
-              <p class="text-sm leading-relaxed mb-6" style="color:rgba(148,163,184,0.7); font-weight:300;">
-                AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology. Updated continuously.
-              </p>
-              <a
-                href="https://ainews.borderlesscreators.com/"
-                target="_blank"
-                rel="noopener"
-                class="bc-btn-primary"
-              >Enter Neural Field</a>
-            </div>
-            <!-- Decorative signal marks -->
-            <div class="hidden sm:flex flex-col gap-3 items-end self-center" aria-hidden="true">
-              {['#22D3EE','#2DD4BF','#3B82F6','#A78BFA'].map((c, i) => (
-                <div
-                  class="rounded-sm"
-                  style={`width:${32 - i*6}px; height:4px; background:${c}; opacity:${0.5 - i*0.1};`}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
 
   </main>
 
   <!-- ──────────────────────────────────────────────────────────────────────── -->
   <!-- FOOTER                                                                 -->
   <!-- ──────────────────────────────────────────────────────────────────────── -->
-  <footer class="bc-divider py-12">
+  <footer class="bc-divider py-8">
     <div class="mx-auto max-w-6xl px-8">
-      <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-        <!-- Brand -->
-        <div class="max-w-xs">
-          <div class="mb-3">
-            <img
-              src="/logo-nav.png"
-              alt="Borderless Creators"
-              height="28"
-              style="height:28px; width:auto; display:block; opacity:0.65;"
-            />
-          </div>
-          <p class="text-[12px] leading-relaxed" style="color:rgba(100,116,139,0.6); font-weight:300;">
-            An AI-native creative lab for intelligence, identity, worlds, and stories.
-          </p>
-          <p class="text-[12px] mt-1" style="color:rgba(100,116,139,0.5);">
-            Created by <a href="https://leonchen.ai" target="_blank" rel="noopener" class="hover:text-[#94A3B8] transition-colors">Leon Chen</a>.
-          </p>
-        </div>
+      <div class="flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between">
+        <!-- Logo -->
+        <a href="/" aria-label="Borderless Creators — home">
+          <img
+            src="/logo-nav.png"
+            alt="Borderless Creators"
+            height="24"
+            style="height:24px; width:auto; display:block; opacity:0.5;"
+          />
+        </a>
 
         <!-- Links -->
         <nav aria-label="Footer navigation">
@@ -305,7 +293,7 @@ const projects = [
             {[
               { label: 'Neural Field', href: 'https://ainews.borderlesscreators.com/' },
               { label: 'Projects',     href: '#projects' },
-                            { label: 'leonchen.ai',  href: 'https://leonchen.ai' },
+              { label: 'leonchen.ai',  href: 'https://leonchen.ai' },
               { label: 'Contact',      href: 'mailto:zhongyue.leon.chen@gmail.com' },
             ].map((link) => (
               <li>
@@ -323,9 +311,9 @@ const projects = [
       </div>
 
       <!-- Bottom bar -->
-      <div class="mt-10 pt-6 bc-divider flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <div class="mt-6 pt-5 bc-divider flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
         <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.4);">
-          &copy; {new Date().getFullYear()} Borderless Creators
+          &copy; {new Date().getFullYear()} Borderless Creators — built by <a href="https://leonchen.ai" target="_blank" rel="noopener" style="color:rgba(100,116,139,0.5);" class="hover:text-[#2DD4BF] transition-colors">Leon Chen</a>
         </p>
         <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.3);">
           borderlesscreators.com
@@ -336,6 +324,28 @@ const projects = [
 </BaseLayout>
 
 <style>
+  /* Live card */
+  .bc-card-live {
+    background: linear-gradient(135deg, #07111F 0%, rgba(11,23,38,0.7) 100%);
+    border: 1px solid rgba(34,211,238,0.25);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 0 32px rgba(34,211,238,0.06), inset 0 0 40px rgba(34,211,238,0.03);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .bc-card-live:hover {
+    border-color: rgba(34,211,238,0.45);
+    box-shadow: 0 0 48px rgba(34,211,238,0.1), inset 0 0 40px rgba(34,211,238,0.04);
+  }
+  .live-accent-line {
+    background: linear-gradient(90deg, transparent, rgba(34,211,238,0.55), rgba(45,212,191,0.4), transparent);
+    animation: live-pulse 3s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+
   /* Nav links */
   .nav-link {
     font-family: 'IBM Plex Mono', monospace;
