@@ -77,6 +77,7 @@ const projects = [
       <!-- Desktop nav links -->
       <div class="hidden md:flex items-center gap-6">
         <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link">leonchen.ai ↗</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="mailto:contact@borderlesscreators.com" class="nav-link">Contact</a>
         <a
           href="https://ainews.borderlesscreators.com/"
@@ -101,6 +102,7 @@ const projects = [
     <input type="checkbox" id="mob-toggle" class="sr-only peer" />
     <div class="mob-menu hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider">
       <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link-mob">leonchen.ai ↗</a>
+      <a href="#about" class="nav-link-mob">About</a>
       <a href="mailto:contact@borderlesscreators.com" class="nav-link-mob">Contact</a>
       <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener noreferrer" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
     </div>
@@ -110,7 +112,7 @@ const projects = [
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <!-- HERO                                                                -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden" style="min-height: 100vh; min-height: 100svh; display:flex; align-items:center;" aria-label="Hero">
+    <section id="hero" class="relative overflow-hidden" style="min-height: 100vh; min-height: 100svh; display:flex; align-items:center;" aria-label="Hero">
       <!-- Hero banner image — primary background -->
       <img
         src="/hero-banner.webp"
@@ -151,7 +153,7 @@ const projects = [
           style="font-size: clamp(44px, 6vw, 72px); line-height:1.04; letter-spacing:-0.02em; max-width:700px;"
         >
           Creative systems<br/>
-          <span class="text-gradient">for the intelligence era.</span>
+          <span class="text-gradient">for the intelligence&nbsp;era</span>
         </h1>
 
         <!-- Body -->
@@ -287,7 +289,7 @@ const projects = [
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <!-- PHILOSOPHY / ABOUT                                                  -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
-    <section class="bc-philosophy" aria-labelledby="philosophy-heading">
+    <section id="about" class="bc-philosophy" style="scroll-margin-top: 80px;" aria-labelledby="philosophy-heading">
       <div class="mx-auto w-full max-w-6xl px-8">
         <div class="philosophy-grid">
 
@@ -310,9 +312,11 @@ const projects = [
           </div>
 
           <!-- Visual block -->
-          <div class="philosophy-visual" aria-hidden="true">
-            <div class="philosophy-glow"></div>
-            <img src="/brand-mark.webp" alt="" class="philosophy-mark" width="340" height="340" loading="lazy" decoding="async" />
+          <div class="philosophy-visual">
+            <div class="philosophy-glow" aria-hidden="true"></div>
+            <a href="#hero" class="philosophy-mark-link" aria-label="Back to top">
+              <img src="/brand-mark.webp" alt="Borderless Creators mark" class="philosophy-mark" width="340" height="340" loading="lazy" decoding="async" />
+            </a>
           </div>
 
         </div>
@@ -392,6 +396,14 @@ const projects = [
       transparent 70%);
     pointer-events: none;
   }
+  .philosophy-mark-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.4s ease;
+  }
+  .philosophy-mark-link:hover {
+    transform: scale(1.04);
+  }
   .philosophy-mark {
     width: 100%;
     max-width: 340px;
@@ -401,6 +413,14 @@ const projects = [
       drop-shadow(0 0 28px rgba(34,211,238,0.28))
       drop-shadow(0 0 64px rgba(34,211,238,0.12));
     opacity: 0.88;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+  }
+  .philosophy-mark-link:hover .philosophy-mark {
+    filter:
+      drop-shadow(0 0 40px rgba(34,211,238,0.65))
+      drop-shadow(0 0 90px rgba(34,211,238,0.30))
+      drop-shadow(0 0 16px rgba(45,212,191,0.40));
+    opacity: 1;
   }
   @media (max-width: 768px) {
     .philosophy-grid {
