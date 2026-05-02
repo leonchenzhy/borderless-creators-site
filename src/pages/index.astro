@@ -112,13 +112,6 @@ const projects = [
       <!-- Topographic canvas field -->
       <HeroSignalField />
 
-      <!-- Character overlay — right side, blends via screen mode -->
-      <div class="hero-character-wrap pointer-events-none" aria-hidden="true">
-        <img src="/hero-character.png" alt="" class="hero-character-img" />
-        <!-- Left-edge fade so character blends into the canvas -->
-        <div class="hero-character-fade"></div>
-      </div>
-
       <!-- Bottom fade into base -->
       <div
         class="pointer-events-none absolute bottom-0 left-0 right-0 z-10"
@@ -277,77 +270,19 @@ const projects = [
   <!-- ──────────────────────────────────────────────────────────────────────── -->
   <!-- FOOTER                                                                 -->
   <!-- ──────────────────────────────────────────────────────────────────────── -->
-  <footer class="bc-divider py-8">
+  <footer class="bc-divider py-6">
     <div class="mx-auto max-w-6xl px-8">
-      <div class="flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between">
-        <!-- Logo -->
-        <a href="/" aria-label="Borderless Creators — home">
-          <img
-            src="/logo-nav.png"
-            alt="Borderless Creators"
-            height="24"
-            style="height:24px; width:auto; display:block; opacity:0.5;"
-          />
-        </a>
-
-        <!-- Links -->
-        <nav aria-label="Footer navigation">
-          <ul class="flex flex-wrap gap-x-7 gap-y-3">
-            {[
-              { label: 'Neural Field', href: 'https://ainews.borderlesscreators.com/' },
-              { label: 'Projects',     href: '#projects' },
-              { label: 'leonchen.ai',  href: 'https://leonchen.ai' },
-              { label: 'Contact',      href: 'mailto:zhongyue.leon.chen@gmail.com' },
-            ].map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener' : undefined}
-                  class="font-mono-bc text-[10px] tracking-[0.1em] uppercase transition-colors duration-150 hover:text-[#2DD4BF]"
-                  style="color:rgba(100,116,139,0.6); text-decoration:none;"
-                >{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
+      <p class="font-mono-bc text-[10px] tracking-[0.06em]" style="color:rgba(100,116,139,0.45);">
+        &copy; {new Date().getFullYear()} Borderless Creators. Built with
+        <a href="https://astro.build/" target="_blank" rel="noopener" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Astro</a>
+        &amp;
+        <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener" class="hover:text-[#2DD4BF] transition-colors" style="color:rgba(100,116,139,0.6);">Cloudflare Pages</a>.
+      </p>
     </div>
   </footer>
 </BaseLayout>
 
 <style>
-  /* Hero character overlay */
-  .hero-character-wrap {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 92vh;
-    height: 92svh;
-    z-index: 5;
-    display: flex;
-    align-items: flex-end;
-  }
-  .hero-character-img {
-    height: 100%;
-    width: auto;
-    display: block;
-    mix-blend-mode: screen;
-    opacity: 0.92;
-  }
-  .hero-character-fade {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 220px;
-    background: linear-gradient(to right, #020617 0%, transparent 100%);
-    pointer-events: none;
-  }
-  /* Hide on smaller screens so it doesn't overlap text */
-  @media (max-width: 900px) {
-    .hero-character-wrap { display: none; }
-  }
-
   /* Live card */
   .bc-card-live {
     background: linear-gradient(135deg, #07111F 0%, rgba(11,23,38,0.7) 100%);
