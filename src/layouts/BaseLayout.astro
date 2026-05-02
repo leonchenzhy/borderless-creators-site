@@ -21,7 +21,7 @@ interface Props {
 const {
   title       = 'Borderless Creators — AI-Native Creative Lab',
   description = 'Borderless Creators is an AI-native creative lab for intelligence, identity, worlds, and stories — built by Leon Chen.',
-  ogImage     = '/og-image.png',   // TODO: create og-image.png (1200×630)
+  ogImage     = '/og-image.png',
   ogType      = 'website',
   canonicalPath = Astro.url.pathname,
 } = Astro.props;
@@ -39,6 +39,7 @@ const jsonLd = {
   name: 'Borderless Creators',
   url: CANONICAL_ORIGIN + '/',
   description: 'Borderless Creators is an AI-native creative lab for intelligence, identity, worlds, and stories.',
+  logo: CANONICAL_ORIGIN + '/og-image.png',
   creator: {
     '@type': 'Person',
     name: 'Leon Chen',
