@@ -109,26 +109,17 @@ const projects = [
     <!-- HERO                                                                -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <section class="relative overflow-hidden" style="min-height: 100vh; min-height: 100svh; display:flex; align-items:center;" aria-label="Hero">
-      <!-- Topographic canvas field -->
+      <!-- Canvas fallback (shows if banner image fails to load) -->
       <HeroSignalField />
 
-      <!-- Atmospheric glow behind character -->
-      <div
-        class="pointer-events-none absolute inset-0 z-4"
-        style="background: radial-gradient(ellipse 55% 70% at 82% 52%, rgba(34,211,238,0.07) 0%, rgba(59,130,246,0.05) 40%, transparent 70%);"
+      <!-- Hero banner image — primary background -->
+      <img
+        src="/hero-banner.png"
+        alt=""
         aria-hidden="true"
-      ></div>
-
-      <!-- Character overlay — vertically centred so feet stay visible -->
-      <div class="hero-character-wrap pointer-events-none" aria-hidden="true">
-        <img src="/hero-character.png" alt="" class="hero-character-img" />
-        <!-- Left-edge fade into canvas -->
-        <div class="hero-character-fade-left"></div>
-        <!-- Top fade -->
-        <div class="hero-character-fade-top"></div>
-        <!-- Bottom fade -->
-        <div class="hero-character-fade-bottom"></div>
-      </div>
+        class="pointer-events-none absolute inset-0 w-full h-full"
+        style="object-fit:cover; object-position:center center; z-index:1;"
+      />
 
       <!-- Bottom fade into base -->
       <div
