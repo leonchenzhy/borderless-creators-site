@@ -89,18 +89,23 @@ const projects = [
       </div>
 
       <!-- Mobile toggle -->
-      <label class="cursor-pointer md:hidden" for="mob-toggle" aria-label="Open navigation">
+      <button
+        id="mob-btn"
+        class="cursor-pointer md:hidden bg-transparent border-0 p-0"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mob-menu"
+      >
         <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
           <line x1="0" y1="1"  x2="22" y2="1"  stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
           <line x1="0" y1="8"  x2="22" y2="8"  stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
           <line x1="0" y1="15" x2="14" y2="15" stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
-      </label>
+      </button>
     </nav>
 
     <!-- Mobile menu -->
-    <input type="checkbox" id="mob-toggle" class="sr-only peer" />
-    <div class="mob-menu hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider">
+    <div id="mob-menu" class="mob-menu hidden flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider" role="navigation" aria-label="Mobile navigation">
       <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link-mob">leonchen.ai ↗</a>
       <a href="#about" class="nav-link-mob">About</a>
       <a href="mailto:contact@borderlesscreators.com" class="nav-link-mob">Contact</a>
@@ -315,7 +320,7 @@ const projects = [
           <div class="philosophy-visual">
             <div class="philosophy-glow" aria-hidden="true"></div>
             <a href="#hero" class="philosophy-mark-link" aria-label="Back to top">
-              <img src="/brand-mark.webp" alt="Borderless Creators mark" class="philosophy-mark" width="340" height="340" loading="lazy" decoding="async" />
+              <img src="/brand-mark.webp" alt="Borderless Creators mark" class="philosophy-mark" width="1050" height="639" loading="lazy" decoding="async" />
             </a>
           </div>
 
@@ -506,15 +511,47 @@ const projects = [
 
 <script>
   (function () {
+    // ── Sticky header ────────────────────────────────────────────────────────
     const header = document.getElementById('site-header');
-    if (!header) return;
-    const THRESHOLD = 40;
-
-    function update() {
-      header.classList.toggle('scrolled', window.scrollY > THRESHOLD);
+    if (header) {
+      const THRESHOLD = 40;
+      function updateHeader() {
+        header.classList.toggle('scrolled', window.scrollY > THRESHOLD);
+      }
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
     }
 
-    update(); // run once on load in case page is already scrolled
-    window.addEventListener('scroll', update, { passive: true });
+    // ── Accessible mobile menu ───────────────────────────────────────────────
+    const mobBtn  = document.getElementById('mob-btn');
+    const mobMenu = document.getElementById('mob-menu');
+    if (mobBtn && mobMenu) {
+      mobBtn.addEventListener('click', () => {
+        const isOpen = mobBtn.getAttribute('aria-expanded') === 'true';
+        const next   = !isOpen;
+        mobBtn.setAttribute('aria-expanded', String(next));
+        mobMenu.classList.toggle('hidden', !next);
+        mobMenu.classList.toggle('flex',    next);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobBtn.getAttribute('aria-expanded') === 'true') {
+          mobBtn.setAttribute('aria-expanded', 'false');
+          mobMenu.classList.add('hidden');
+          mobMenu.classList.remove('flex');
+          mobBtn.focus();
+        }
+      });
+
+      // Close when a menu link is tapped
+      mobMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobBtn.setAttribute('aria-expanded', 'false');
+          mobMenu.classList.add('hidden');
+          mobMenu.classList.remove('flex');
+        });
+      });
+    }
   })();
 </script>

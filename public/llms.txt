@@ -1,32 +1,46 @@
 # Borderless Creators
 
-Borderless Creators is an AI-native creative lab by Leon Chen for intelligence, identity, worlds, and stories.
+Last updated: 2026-05-03
+Canonical site: https://borderlesscreators.com/
 
-## Canonical URL
-https://borderlesscreators.com/
+Borderless Creators is an experimental creative studio and AI-native project universe founded by Leon Chen. It explores the intersection of AI, creation, culture, media, sports, gaming, digital identity, and storytelling.
 
-## Related sites
-- Leon Chen (personal brand): https://leonchen.ai
-- Neural Field (AI News Intelligence Center): https://ainews.borderlesscreators.com/
+## Founder
 
-## Project Universe
+Leon Chen
+AI product marketing and GTM leader focused on AI platforms, creator ecosystems, global partnerships, and cross-cultural technology narratives.
+Personal site: https://leonchen.ai/
 
-- Neural Field: Live. AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology. URL: https://ainews.borderlesscreators.com/
-- Digital Leon: In Lab. A digital identity experiment exploring AI agents, synthetic media, and more human ways to introduce ideas.
-- World Model Studio: Exploring. Experiments in AI-assisted game scene creation, remastering, spatial imagination, and world-building workflows.
-- Manga Lab: Exploring. AI-generated Japanese-style manga experiments blending character design, visual narrative, and cross-cultural storytelling.
+## Primary experiments
 
-## Four Territories
+- Neural Field: AI-powered signal discovery and news intelligence focused on AI, sports, gaming, media, and creation. Status: Live. URL: https://ainews.borderlesscreators.com/
+- Digital Leon: Experiments in digital human presence, AI identity, and conversational interfaces. Status: In Lab.
+- World Model Studio: Explorations around AI, simulation, world models, and future creative infrastructure. Status: In Lab.
+- Manga Lab: Storytelling and visual worldbuilding experiments blending anime, mythology, AI, and culture. Status: Upcoming.
+
+## Four territories
+
 - Intelligence: Signals, briefs, research workflows, and news systems.
 - Identity: Digital humans, AI agents, personal media, and synthetic presence.
 - Worlds: Scene generation, simulation, games, and spatial storytelling.
 - Stories: Manga, publishing experiments, cross-cultural narratives, and creative IP.
 
-## Brand Summary
+## Brand summary
+
 Borderless Creators explores how AI expands creative systems across intelligence workflows, digital identity, world-building, and visual storytelling. It is an experimental creative lab, not a personal resume or blog.
 
-## Founder
-Leon Chen — https://leonchen.ai
+## Priority pages
+
+- Home: https://borderlesscreators.com/
+- Neural Field: https://ainews.borderlesscreators.com/
+- Leon Chen: https://leonchen.ai/
+
+## Related properties
+
+- https://borderlesscreators.com/
+- https://ainews.borderlesscreators.com/
+- https://leonchen.ai/
 
 ## Contact
+
 contact@borderlesscreators.com

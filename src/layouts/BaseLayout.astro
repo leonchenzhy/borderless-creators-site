@@ -2,13 +2,11 @@
 /**
  * BaseLayout.astro
  * Global HTML shell for Borderless Creators.
- */
-import '../styles/global.css';
-/**
  *
  * Canonical origin is always hardcoded to production — never derived from
  * import.meta.env.SITE_URL — so staging builds cannot leak into canonical/OG URLs.
  */
+import '../styles/global.css';
 
 interface Props {
   title?: string;
@@ -33,20 +31,73 @@ const ogImageURL       = new URL(ogImage, CANONICAL_ORIGIN).href;
 
 const isStaging = import.meta.env.IS_STAGING === 'true';
 
+// ── Structured data ──────────────────────────────────────────────────────────
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Borderless Creators',
-  url: CANONICAL_ORIGIN + '/',
-  description: 'Borderless Creators is an AI-native creative lab for intelligence, identity, worlds, and stories.',
-  logo: CANONICAL_ORIGIN + '/og-image.png',
-  creator: {
-    '@type': 'Person',
-    name: 'Leon Chen',
-    url: 'https://leonchen.ai',
-    sameAs: ['https://leonchen.ai'],
-  },
-  sameAs: ['https://leonchen.ai', 'https://ainews.borderlesscreators.com/'],
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': CANONICAL_ORIGIN + '/#website',
+      name: 'Borderless Creators',
+      url: CANONICAL_ORIGIN + '/',
+      description: 'Borderless Creators is an experimental creative studio and AI-native project universe exploring intelligence, digital identity, worlds, and stories.',
+    },
+    {
+      '@type': 'Organization',
+      '@id': CANONICAL_ORIGIN + '/#organization',
+      name: 'Borderless Creators',
+      url: CANONICAL_ORIGIN + '/',
+      logo: {
+        '@type': 'ImageObject',
+        url: CANONICAL_ORIGIN + '/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+      founder: {
+        '@type': 'Person',
+        name: 'Leon Chen',
+        url: 'https://leonchen.ai',
+        jobTitle: 'Founder',
+      },
+      sameAs: [
+        'https://leonchen.ai',
+        'https://ainews.borderlesscreators.com/',
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': CANONICAL_ORIGIN + '/#experiments',
+      name: 'Current Experiments',
+      description: 'Active and in-progress projects within the Borderless Creators lab.',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Neural Field',
+          description: 'AI-powered news intelligence for tracking the frontier of AI, sports, gaming, platforms, and creative technology.',
+          url: 'https://ainews.borderlesscreators.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Digital Leon',
+          description: 'A digital identity experiment exploring AI agents, synthetic media, and more human ways to introduce ideas.',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'World Model Studio',
+          description: 'Experiments in AI-assisted scene creation, spatial storytelling, and worldbuilding workflows for games and interactive media.',
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: 'Manga Lab',
+          description: 'AI-assisted manga experiments blending character design, visual narrative, humor, mythology, and cross-cultural storytelling.',
+        },
+      ],
+    },
+  ],
 };
 ---
 
@@ -66,19 +117,23 @@ const jsonLd = {
     {!isStaging && <meta name="robots" content="index, follow" />}
 
     <!-- Open Graph -->
-    <meta property="og:type"        content={ogType} />
-    <meta property="og:title"       content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url"         content={canonicalURL} />
-    <meta property="og:image"       content={ogImageURL} />
-    <meta property="og:site_name"   content="Borderless Creators" />
-    <meta property="og:locale"      content="en_US" />
+    <meta property="og:type"         content={ogType} />
+    <meta property="og:title"        content={title} />
+    <meta property="og:description"  content={description} />
+    <meta property="og:url"          content={canonicalURL} />
+    <meta property="og:image"        content={ogImageURL} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"    content="Borderless Creators — AI-Native Creative Lab" />
+    <meta property="og:site_name"    content="Borderless Creators" />
+    <meta property="og:locale"       content="en_US" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card"        content="summary_large_image" />
     <meta name="twitter:title"       content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image"       content={ogImageURL} />
+    <meta name="twitter:image:alt"   content="Borderless Creators — AI-Native Creative Lab" />
 
     <!-- Favicon -->
     <link rel="icon"             type="image/x-icon"  href="/favicon.ico" />
