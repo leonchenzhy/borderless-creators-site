@@ -59,7 +59,7 @@ const projects = [
   <!-- ────────────────────────────────────────────────────────────────────── -->
   <!-- NAV                                                                   -->
   <!-- ────────────────────────────────────────────────────────────────────── -->
-  <header class="absolute top-0 left-0 right-0 z-50">
+  <header class="bc-header" id="site-header">
     <nav
       class="mx-auto flex max-w-6xl items-center justify-between px-8 py-7"
       aria-label="Main navigation"
@@ -99,7 +99,7 @@ const projects = [
 
     <!-- Mobile menu -->
     <input type="checkbox" id="mob-toggle" class="sr-only peer" />
-    <div class="hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider" style="background:#07111F;">
+    <div class="mob-menu hidden peer-checked:flex flex-col md:hidden px-8 py-4 gap-3 border-t bc-divider">
       <a href="https://leonchen.ai" target="_blank" rel="noopener noreferrer" class="nav-link-mob">leonchen.ai ↗</a>
       <a href="mailto:contact@borderlesscreators.com" class="nav-link-mob">Contact</a>
       <a href="https://ainews.borderlesscreators.com/" target="_blank" rel="noopener noreferrer" class="bc-btn-primary mt-1 self-start">Enter Neural Field</a>
@@ -175,7 +175,7 @@ const projects = [
     <!-- ──────────────────────────────────────────────────────────────────── -->
     <!-- PROJECT UNIVERSE                                                    -->
     <!-- ──────────────────────────────────────────────────────────────────── -->
-    <section id="projects" class="flex items-center" style="min-height:100vh; min-height:100svh; padding: 80px 0;" aria-labelledby="projects-heading">
+    <section id="projects" class="flex items-center" style="min-height:100vh; min-height:100svh; padding: 80px 0; scroll-margin-top: 80px;" aria-labelledby="projects-heading">
       <div class="mx-auto w-full max-w-6xl px-8">
         <!-- Section header -->
         <div class="flex items-end justify-between mb-10">
@@ -453,4 +453,44 @@ const projects = [
     transition: color 0.18s ease;
   }
   .nav-link-mob:hover { color: #2DD4BF; }
+
+  /* ── Sticky header ── */
+  .bc-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      backdrop-filter 0.35s ease;
+  }
+  .bc-header.scrolled {
+    background-color: rgba(2, 6, 23, 0.84);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+  /* Mobile menu needs its own opaque background regardless of scroll state */
+  .bc-header .mob-menu {
+    background: #07111F;
+  }
 </style>
+
+<script>
+  (function () {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    const THRESHOLD = 40;
+
+    function update() {
+      header.classList.toggle('scrolled', window.scrollY > THRESHOLD);
+    }
+
+    update(); // run once on load in case page is already scrolled
+    window.addEventListener('scroll', update, { passive: true });
+  })();
+</script>
